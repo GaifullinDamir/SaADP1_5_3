@@ -14,51 +14,22 @@ void addVertex(Vertex*& pRoot, Vertex*& pCurrent, int data)
 		pRoot = new Vertex;
 		pRoot->data = data;
 		pRoot->left = pRoot->right = nullptr;
-		cout << "   Complete." << endl;
 	}
 	else
 	{
-		if(pCurrent->left == nullptr && pCurrent->right != nullptr)
-		{
-			Vertex* vertex = new Vertex;
-			vertex->data = data;
-			vertex->left = vertex->right = nullptr;
-			pCurrent->left = vertex;
-			cout << "   Complete." << endl;
-		}
-		else if (pCurrent->left != nullptr && pCurrent->right == nullptr)
-		{
-			Vertex* vertex = new Vertex;
-			vertex->data = data;
-			vertex->left = vertex->right = nullptr;
-			pCurrent->right = vertex;
-			cout << "   Complete." << endl;
-		}
+		Vertex* vertex = new Vertex;
+		vertex->data = data;
+		vertex->left = vertex->right = nullptr;
+		if(/*pCurrent->left == nullptr && */pCurrent->right /*!= nullptr*/){ pCurrent->left = vertex; }
+		else if (pCurrent->left /*!= nullptr && pCurrent->right == nullptr*/){ pCurrent->right = vertex; }
 		else
 		{
 			cout << "   Both branches are free. Add Left (1)/Right (2): ";
 			switch (input())
 			{
-			case Left:
-			{
-				Vertex* vertex = new Vertex;
-				vertex->data = data;
-				vertex->left = vertex->right = nullptr;
-				pCurrent->left = vertex;
-				cout << "   Complete." << endl;
-				break;
-			}
-			case Right:
-			{
-				Vertex* vertex = new Vertex;
-				vertex->data = data;
-				vertex->left = vertex->right = nullptr;
-				pCurrent->right = vertex;
-				cout << "   Complete." << endl;
-				break;
-			}
-			default:
-				cout << "   There is no such menu item." << endl; break;
+			case Left:{ pCurrent->left = vertex; break; }
+			case Right:{ pCurrent->right = vertex; break;}
+			default: cout << "   There is no such menu item." << endl; break;
 			}
 		}
 	}

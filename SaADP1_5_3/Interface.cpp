@@ -38,9 +38,9 @@ void interface(Vertex*& pRoot)
 		cout << "   Choice: ";
 		switch (input())
 		{
-		case(ShowMenu):{ printMenu(); break; }
-		case(Add):{ caseAdd(pRoot); break; }
-		case(Show):
+		case ShowMenu:{ printMenu(); break; }
+		case Add:{ caseAdd(pRoot); break; }
+		case Show:
 		{
 			if (!treeIsEmpty(pRoot))
 			{
@@ -51,13 +51,13 @@ void interface(Vertex*& pRoot)
 			else cout << "   Nothing to show." << endl;
 			break; 
 		}
-		case(Delete):
+		case Delete:
 		{
 			if (!treeIsEmpty(pRoot)) { treeClearMemory(pRoot); cout << "   Complete." << endl; }
 			else cout << "   Nothing to delete." << endl;
 			break;
 		}
-		case(Exit):{ stop = true; break; }
+		case Exit:{ stop = true; break; }
 		default:
 			std::cout << "   There is no such menu item." << std::endl; std::cout << std::endl; break;
 		}
@@ -82,7 +82,7 @@ void caseAdd(Vertex*& pRoot)
 		searchVertex(pCurrent, pSearched, searchedData, check);
 		if (check)
 		{
-			if (pCurrent->left != nullptr && pCurrent->right != nullptr) { cout << "   The vertex is full." << endl; }
+			if (pSearched->left != nullptr && pSearched->right != nullptr) { cout << "   The vertex is full." << endl; }
 			else
 			{
 				cout << "   Enter data to add: "; int data = input();
