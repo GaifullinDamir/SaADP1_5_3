@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Vertex.h"
-#include "UserInterface.h"
+#include "Interface.h"
 using namespace std;
 
 void treeInit(Vertex*& pRoot) { pRoot = nullptr; }
@@ -14,6 +14,7 @@ void addVertex(Vertex*& pRoot, Vertex*& pCurrent, int data)
 		pRoot = new Vertex;
 		pRoot->data = data;
 		pRoot->left = pRoot->right = nullptr;
+		cout << "   Complete." << endl;
 	}
 	else
 	{
@@ -24,6 +25,7 @@ void addVertex(Vertex*& pRoot, Vertex*& pCurrent, int data)
 			vertex->data = data;
 			vertex->left = vertex->right = nullptr;
 			pCurrent->left = vertex;
+			cout << "   Complete." << endl;
 		}
 		else if (pCurrent->left != nullptr && pCurrent->right == nullptr)
 		{
@@ -31,11 +33,12 @@ void addVertex(Vertex*& pRoot, Vertex*& pCurrent, int data)
 			vertex->data = data;
 			vertex->left = vertex->right = nullptr;
 			pCurrent->right = vertex;
+			cout << "   Complete." << endl;
 		}
 		else
 		{
 			cout << "   Both branches are free. Add Left (1)/Right (2)." << endl;
-			switch (userInput())
+			switch (input())
 			{
 			case Left:
 			{
@@ -43,6 +46,7 @@ void addVertex(Vertex*& pRoot, Vertex*& pCurrent, int data)
 				vertex->data = data;
 				vertex->left = vertex->right = nullptr;
 				pCurrent->left = vertex;
+				cout << "   Complete." << endl;
 				break;
 			}
 			case Right:
@@ -51,6 +55,7 @@ void addVertex(Vertex*& pRoot, Vertex*& pCurrent, int data)
 				vertex->data = data;
 				vertex->left = vertex->right = nullptr;
 				pCurrent->right = vertex;
+				cout << "   Complete." << endl;
 				break;
 			}
 			default:
@@ -61,19 +66,19 @@ void addVertex(Vertex*& pRoot, Vertex*& pCurrent, int data)
 	}
 }
 
-void searchVertex(Vertex*& pCurrent, int searchedData)
+void searchVertex(Vertex*& pCurrent, Vertex*& pSearched, int searchedData, bool& check)
 {
 	bool stop = false;
-	while (stop)
+	if (!stop)
 	{
+
 		if (pCurrent != nullptr)
 		{
-			std::cout << pCurrent->data << std::endl;
-			if (pCurrent->data == searchedData) { stop = true; }
+			if (pCurrent->data == searchedData) { pSearched = pCurrent; check = stop = true; }
 			else
 			{
-				searchVertex(pCurrent->left, searchedData);
-				searchVertex(pCurrent->right, searchedData);
+				searchVertex(pCurrent->left, pSearched, searchedData, check);
+				searchVertex(pCurrent->right, pSearched, searchedData, check);
 			}
 		}
 	}
@@ -85,7 +90,7 @@ void showBackSymmetric(Vertex* pCurrent, int level)
 	{
 		level++;
 		showBackSymmetric(pCurrent->right, level);
-		for (int i = 0; i < level - 1; i++) { cout << "\t"; }
+		for (int i = 0; i < level - 1; i++) { cout << "   "; }
 		cout << pCurrent->data << endl;
 		showBackSymmetric(pCurrent->left, level);
 	}
@@ -98,5 +103,6 @@ void treeClearMemory(Vertex*& pCurrent)
 		treeClearMemory(pCurrent->left);
 		treeClearMemory(pCurrent->right);
 		delete pCurrent;
+		pCurrent = nullptr;
 	}
 }

@@ -9,9 +9,9 @@ void treeInit(Vertex*& pRoot);
 
 bool treeIsEmpty(Vertex* pRoot);
 
-void searchVertex(Vertex*& pCurrent, int searchedData);
+void searchVertex(Vertex*& pCurrent, Vertex*& pSearched, int searchedData, bool& check);
 
-void addVertex(Vertex*& pCurrent);
+void addVertex(Vertex*& pRoot, Vertex*& pCurrent, int data);
 
 void showBackSymmetric(Vertex* pCurrent, int level);
 
