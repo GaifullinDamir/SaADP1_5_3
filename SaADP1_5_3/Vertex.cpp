@@ -37,7 +37,7 @@ void addVertex(Vertex*& pRoot, Vertex*& pCurrent, int data)
 		}
 		else
 		{
-			cout << "   Both branches are free. Add Left (1)/Right (2)." << endl;
+			cout << "   Both branches are free. Add Left (1)/Right (2): ";
 			switch (input())
 			{
 			case Left:
@@ -59,8 +59,7 @@ void addVertex(Vertex*& pRoot, Vertex*& pCurrent, int data)
 				break;
 			}
 			default:
-				cout << "   There is no such menu item." << endl;
-				break;
+				cout << "   There is no such menu item." << endl; break;
 			}
 		}
 	}
@@ -71,7 +70,6 @@ void searchVertex(Vertex*& pCurrent, Vertex*& pSearched, int searchedData, bool&
 	bool stop = false;
 	if (!stop)
 	{
-
 		if (pCurrent != nullptr)
 		{
 			if (pCurrent->data == searchedData) { pSearched = pCurrent; check = stop = true; }

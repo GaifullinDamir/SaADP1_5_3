@@ -59,8 +59,7 @@ void interface(Vertex*& pRoot)
 		}
 		case(Exit):{ stop = true; break; }
 		default:
-			std::cout << "   There is no such menu item." << std::endl; std::cout << std::endl;
-			break;
+			std::cout << "   There is no such menu item." << std::endl; std::cout << std::endl; break;
 		}
 		std::cout << "   (0) - show menu." << std::endl;
 	}
