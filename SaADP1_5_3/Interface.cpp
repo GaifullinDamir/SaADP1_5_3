@@ -82,8 +82,12 @@ void caseAdd(Vertex*& pRoot)
 		searchVertex(pCurrent, pSearched, searchedData, check);
 		if (check)
 		{
-			cout << "   Enter data to add: "; int data = input();
-			addVertex(pRoot, pSearched, data);
+			if (pCurrent->left != nullptr && pCurrent->right != nullptr) { cout << "   The vertex is full." << endl; }
+			else
+			{
+				cout << "   Enter data to add: "; int data = input();
+				addVertex(pRoot, pSearched, data);
+			}
 		}
 		else cout << "   No such vertex." << endl;
 	}

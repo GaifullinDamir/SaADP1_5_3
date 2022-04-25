@@ -18,8 +18,7 @@ void addVertex(Vertex*& pRoot, Vertex*& pCurrent, int data)
 	}
 	else
 	{
-		if (pCurrent->left != nullptr && pCurrent->right != nullptr) { cout << "   The vertex is full." << endl; }
-		else if(pCurrent->left == nullptr && pCurrent->right != nullptr)
+		if(pCurrent->left == nullptr && pCurrent->right != nullptr)
 		{
 			Vertex* vertex = new Vertex;
 			vertex->data = data;
