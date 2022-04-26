@@ -20,8 +20,8 @@ void addVertex(Vertex*& pRoot, Vertex*& pCurrent, int data)
 		Vertex* vertex = new Vertex;
 		vertex->data = data;
 		vertex->left = vertex->right = nullptr;
-		if(/*pCurrent->left == nullptr && */pCurrent->right /*!= nullptr*/){ pCurrent->left = vertex; }
-		else if (pCurrent->left /*!= nullptr && pCurrent->right == nullptr*/){ pCurrent->right = vertex; }
+		if(pCurrent->right ){ pCurrent->left = vertex; } //Если права вершина заполнена, то вернет true. А это значит, что левая пустая.
+		else if (pCurrent->left){ pCurrent->right = vertex; }//Если левая вершина заполне, то вернет true. А это значит, что правая пустая.
 		else
 		{
 			cout << "   Both branches are free. Add Left (1)/Right (2): ";
@@ -49,6 +49,29 @@ void searchVertex(Vertex*& pCurrent, Vertex*& pSearched, int searchedData, bool&
 				searchVertex(pCurrent->right, pSearched, searchedData, check);
 			}
 		}
+	}
+}
+
+void showForward(Vertex* pCurrent, int level)
+{
+	if (pCurrent != nullptr)
+	{
+		for (int i = 0; i < level; i++) { cout << "   "; }
+		cout << pCurrent->data << endl; level++;
+		showForward(pCurrent->left, level);
+		showForward(pCurrent->right, level);
+	}
+}
+
+void showSymmetric(Vertex* pCurrent, int level)
+{
+	if (pCurrent != nullptr)
+	{
+		level++;
+		showSymmetric(pCurrent->left, level);
+		for (int i = 0; i < level - 1; i++) { cout << "   "; }
+		cout << pCurrent->data << endl;
+		showSymmetric(pCurrent->right, level);
 	}
 }
 

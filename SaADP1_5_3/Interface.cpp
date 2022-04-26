@@ -8,9 +8,11 @@ void printMenu()
 {
 	cout << endl;
 	cout << "1. Adding a vertex." << endl;
-	cout << "2. Inversely symmetrical tree output." << endl;
-	cout << "3. Delete tree." << endl;
-	cout << "4. Exit." << endl;
+	cout << "2. Forward tree output." << endl;
+	cout << "3. Symmetrical tree output." << endl;
+	cout << "4. Inversely symmetrical tree output." << endl;
+	cout << "5. Delete tree." << endl;
+	cout << "6. Exit." << endl;
 	cout << endl;
 }
 
@@ -40,7 +42,29 @@ void interface(Vertex*& pRoot)
 		{
 		case ShowMenu:{ printMenu(); break; }
 		case Add:{ caseAdd(pRoot); break; }
-		case Show:
+		case ShowForward:
+		{
+			if (!treeIsEmpty(pRoot))
+			{
+				cout << "_________________________" << endl;
+				showForward(pRoot, BaseLevel);
+				cout << "_________________________" << endl;
+			}
+			else cout << "   Nothing to show." << endl;
+			break;
+		}
+		case ShowSymmetric:
+		{
+			if (!treeIsEmpty(pRoot))
+			{
+				cout << "_________________________" << endl;
+				showSymmetric(pRoot, BaseLevel);
+				cout << "_________________________" << endl;
+			}
+			else cout << "   Nothing to show." << endl;
+			break;
+		}
+		case ShowBack:
 		{
 			if (!treeIsEmpty(pRoot))
 			{
