@@ -7,13 +7,14 @@ using namespace std;
 void printMenu()
 {
 	cout << endl;
-	cout << "1. Adding a vertex." << endl;
-	cout << "2. Forward tree output." << endl;
-	cout << "3. Symmetrical tree output." << endl;
-	cout << "4. Inversely symmetrical tree output." << endl;
-	cout << "5. Delete tree." << endl;
-	cout << "6. Exit." << endl;
-	cout << endl;
+	cout
+		<< "\n1. Adding a vertex." 
+		<< "\n2. Forward tree output."
+		<< "\n3. Symmetrical tree output."
+		<< "\n4. Inversely symmetrical tree output."
+		<< "\n5. Delete tree."
+		<< "\n6. Exit."
+		<< endl;
 }
 
 int input()
